@@ -1,6 +1,6 @@
 <!-- app/templates/-palette-form.hbs -->
 <h1>{{model.name}}</h1>
-<form>
+<form {{action 'savePalette' on='submit'}}>
   <h2>Palette Name</h2>
   {{input value=model.name class="palette-name-input form-control" type="text" placeholder="New Palette"}}
 
@@ -13,7 +13,7 @@
 
   <h2>Edit Color</h2>
   <div class="btn-group">
-    <div class="btn preview-tile" style={{focusColor.styleString}}></div>
+    <div class="btn preview-tile" style={{focusColorStyleString}}></div>
   </div>
   <div class="color-input-group">
     <span class="color-input-label">R</span>
@@ -32,9 +32,8 @@
   </div>
 
   <div class="btn-group form-actions" role="group">
-    {{#link-to 'palettes' class="btn"}} Cancel{{/link-to}}
-    {{#link-to 'palettes' class="btn"}} Delete{{/link-to}}
-
+    <button class="btn" {{action 'cancel'}}>Cancel</button>
+    <button class="btn" {{action 'deletePalette'}}>Delete</button>
     <input class="btn" type="submit" value="Save">
   </div>
 </form>
